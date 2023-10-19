@@ -1,0 +1,128 @@
+.back{
+  width: 100%;
+  height: 100vh;
+  background: rgb(0,18,255);
+  background: linear-gradient(210deg, rgba(0,18,255,1) 1%, rgba(201,89,69,1) 79%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.search-bar{
+  width: 80%;
+  height: 2.5em;
+  background-color: #fff;
+  margin: 3em 0;
+  border-radius: 4em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1em;
+
+  input{
+    border: 0;
+    outline: 0;
+    width: 80%;
+    max-height: 2.2em;
+    border-radius: 4em;
+    font-size: 1.2em;
+    padding-left: .5em;
+  }
+
+  span{
+    font-size: 1.3em;
+    cursor: pointer;
+  }
+}
+
+.weather-div{
+  width: 100%;
+  height: 30%;
+  position: absolute;
+  text-align: center;
+  top: 35%;
+  padding: .5em;
+  border: 1em solid rgba(#ccc, .2);
+  border-radius: 7em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p{
+    font-size: 4em;
+    font-weight: 700;
+    color: rgba(#ccc, .2);
+    line-height: .8em;
+    font-family: 'Luckiest Guy', cursive;
+  }
+}
+
+.weather-card{
+  width: 90%;
+  height: 65vh;
+  background-color: #fff;
+  z-index: 3;
+  border-radius: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  h2{
+    font-size: 2.6em;
+  }
+}
+
+.info-box{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p{
+    font-size: 1.4em;
+  }
+
+  div{
+    display: flex;
+    align-items: center;
+    gap: .5em;
+  }
+}
+
+.temp{
+  font-size: 2.6em;
+}
+
+.feels-like{
+  font-size: 2em;
+}
+
+.description{
+
+  ul{
+    list-style: none;
+  }
+
+  li{
+    text-align: center;
+  }
+
+}
+
+.title{
+  font-size: 2em;
+  font-weight: 700;
+}
+
+.description-item{
+  font-size: 2em;
+}
+

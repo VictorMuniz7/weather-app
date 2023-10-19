@@ -1,0 +1,63 @@
+<div class="back">
+  <div class="search-bar">
+      <input type="text" placeholder="Search your city">
+      <span><i class="fa-solid fa-magnifying-glass"></i></span>
+  </div>
+  <div class="weather-div">
+    <p>Weather<br>App</p>
+  </div>
+
+  <div class="weather-card" *ngIf="cardInformation">
+    <h2>{{ cardInformation.name }}</h2>
+
+    <div class="info-box">
+      <div class="info">
+        <div>
+          <span><i class="fa-solid fa-temperature-low"></i></span>
+          <p>{{ cardInformation.main.temp_min }} °C</p>
+        </div>
+        <p>Min</p>
+      </div>
+
+      <p class="temp">{{ cardInformation.main.temp }} °C</p>
+
+      <div class="info">
+        <div>
+          <span><i class="fa-solid fa-temperature-high"></i></span>
+          <p>{{ cardInformation.main.temp_max }} °C</p>
+        </div>
+        <p>Max</p>
+      </div>
+
+    </div>
+
+    <p class="feels-like">Feels like {{ cardInformation.main.feels_like }} °C</p>
+
+    <div class="info-box">
+      <div class="info">
+        <div>
+          <i class="fa-solid fa-droplet"></i>
+          <p>{{ cardInformation.main.humidity }}</p>
+        </div>
+        <p>Humidity</p>
+      </div>
+
+      <div class="info">
+        <div>
+          <i class="fa-solid fa-wind"></i>
+          <p>{{ cardInformation.wind.speed }}</p>
+        </div>
+        <p>Wind Speed</p>
+      </div>
+    </div>
+
+    <div class="description">
+      <ul>
+        <li *ngFor="let item of cardInformation.weather">
+          <p class="title">{{ item.main }}</p>
+          <p class="description-item">{{ item.description }}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

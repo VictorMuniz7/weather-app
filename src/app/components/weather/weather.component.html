@@ -1,51 +1,60 @@
 <div class="back">
   <div class="search-bar">
-      <input type="text" placeholder="Search your city">
-      <span><i class="fa-solid fa-magnifying-glass"></i></span>
+      <input type="text" placeholder="Search your city" (keyup.enter)="onSubmit()" [(ngModel)]="city" spellcheck="false">
+      <span (click)="onSubmit()"><i class="fa-solid fa-magnifying-glass"></i></span>
   </div>
-  <div class="weather-div">
+  <div class="weather-div" *ngIf="!isLoading">
     <p>Weather<br>App</p>
   </div>
 
-  <div class="weather-card" *ngIf="cardInformation">
-    <h2>{{ cardInformation.name }}</h2>
+  <span class="loading-icon" *ngIf="isLoading"><i class="fa-solid fa-spinner fa-spin"></i></span>
 
-    <div class="info-box">
-      <div class="info">
-        <div>
-          <span><i class="fa-solid fa-temperature-low"></i></span>
-          <p>{{ cardInformation.main.temp_min }} °C</p>
+  <p class="not-found" *ngIf="notFound">City not found</p>
+
+  <div class="weather-card" *ngIf="cardInformation && !isLoading && !notFound">
+
+    <div class="card-background" [class]="cardInformation.main.temp > 20 ? 'summer' : 'winter' ">
+
+      <h2>{{ cardInformation.name }}</h2>
+
+      <div class="info-box">
+        <div class="info">
+          <div>
+            <span><i style="color: #32BDEA" class="fa-solid fa-temperature-low"></i></span>
+            <p>{{ cardInformation.main.temp_min | number : "1.0-0"}} °C</p>
+          </div>
+          <p>Min</p>
         </div>
-        <p>Min</p>
+
+        <p class="temp">{{ cardInformation.main.temp | number : "1.0-0" }} °C</p>
+
+        <div class="info">
+          <div>
+            <span><i style="color: #F77045" class="fa-solid fa-temperature-high"></i></span>
+            <p>{{ cardInformation.main.temp_max | number : "1.0-0" }} °C</p>
+          </div>
+          <p>Max</p>
+        </div>
+
       </div>
 
-      <p class="temp">{{ cardInformation.main.temp }} °C</p>
-
-      <div class="info">
-        <div>
-          <span><i class="fa-solid fa-temperature-high"></i></span>
-          <p>{{ cardInformation.main.temp_max }} °C</p>
-        </div>
-        <p>Max</p>
-      </div>
-
+      <p class="feels-like">Feels like {{ cardInformation.main.feels_like | number : "1.0-0" }} °C</p>
     </div>
 
-    <p class="feels-like">Feels like {{ cardInformation.main.feels_like }} °C</p>
 
-    <div class="info-box">
+    <div class="info-box info-box-2">
       <div class="info">
         <div>
-          <i class="fa-solid fa-droplet"></i>
-          <p>{{ cardInformation.main.humidity }}</p>
+          <i style="color: #6CE1F5" class="fa-solid fa-droplet"></i>
+          <p>{{ cardInformation.main.humidity }} %</p>
         </div>
         <p>Humidity</p>
       </div>
 
       <div class="info">
         <div>
-          <i class="fa-solid fa-wind"></i>
-          <p>{{ cardInformation.wind.speed }}</p>
+          <i style="color: #477DF1" class="fa-solid fa-wind"></i>
+          <p>{{ cardInformation.wind.speed }} km/h</p>
         </div>
         <p>Wind Speed</p>
       </div>
@@ -60,4 +69,9 @@
       </ul>
     </div>
   </div>
+
+  <footer>
+      <a href="https://github.com/VictorMuniz7" target="_blank"><i class="fa-brands fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/victor-muniz-236842267/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+  </footer>
 </div>

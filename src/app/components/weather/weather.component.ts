@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { WeatherInfo } from 'src/app/interfaces/weather';
 import { WeatherService } from 'src/app/services/weather.service';
 
@@ -7,19 +7,35 @@ import { WeatherService } from 'src/app/services/weather.service';
   templateUrl: './weather.component.html',
   styleUrls: ['./weather.component.scss']
 })
-export class WeatherComponent implements OnInit {
+export class WeatherComponent {
 
   cardInformation!: WeatherInfo
+  city: string = ''
+  isLoading = false
+  notFound = false
 
   constructor(
     private weatherService: WeatherService
   ){}
 
-  ngOnInit(): void {
-    this.weatherService.getWeatherByCity('Paris').subscribe((data) => {
-      this.cardInformation = data
-      console.log(this.cardInformation)
-    })
+
+
+  onSubmit(){
+    this.isLoading = true
+    if(this.city){
+      this.weatherService.getWeatherByCity(this.city).subscribe({
+        next: (data) => {
+        this.city = ''
+        this.cardInformation = data
+        this.isLoading = false
+      },error: (err) => {
+        this.notFound = true
+        this.isLoading = false
+      }
+      })
+
+    }
+
   }
 
 }
